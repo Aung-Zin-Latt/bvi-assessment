@@ -4,7 +4,7 @@
       <div class="flex items-center space-x-2">
         <div
           class="w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold"
-          :class="step === index + 1 ? 'bg-purple-600 text-white' : 'bg-gray-700 text-gray-300'"
+          :class="step === index + 1 ? 'bg-blue-600 text-white' : 'bg-gray-700 text-gray-300'"
         >
           {{ index + 1 }}
         </div>

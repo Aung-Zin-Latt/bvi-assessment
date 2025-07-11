@@ -1,5 +1,6 @@
 <template>
-    <div class="space-y-10 text-white">
+    <!-- Fix width container to match parent layout -->
+    <div class="max-w-4xl w-full mx-auto space-y-10 text-white">
         <!-- Step Header -->
         <div class="text-center">
             <h1 class="text-3xl font-bold">Shareholders</h1>
@@ -8,24 +9,23 @@
             </p>
         </div>
 
-        <div v-for="(shareholder, index) in shareholders" :key="index"
-            class="border border-gray-700 p-6 rounded-lg space-y-4 bg-gray-900">
-            <div class="flex justify-between items-center">
-                <h2 class="text-lg font-semibold">Shareholder {{ index + 1 }}</h2>
-                <button v-if="shareholders.length > 1" @click="removeShareholder(index)" class="text-red-400 hover:underline text-sm">Remove</button>
-            </div>
+        <!-- Shareholder Cards -->
+        <div class="space-y-6">
+            <div v-for="(shareholder, index) in shareholders" :key="index"
+                class="border border-gray-700 p-6 rounded-lg space-y-4 bg-gray-900">
+                <div class="flex justify-between items-center">
+                    <h2 class="text-lg font-semibold">Shareholder {{ index + 1 }}</h2>
+                    <button v-if="shareholders.length > 1" @click="removeShareholder(index)" class="text-red-400 hover:underline text-sm">Remove</button>
+                </div>
 
-            <div class="space-y-4">
-                <input v-model="shareholder.fullName" class="w-full p-2 rounded bg-gray-800 border border-gray-600" placeholder="Full name" />
-                <input v-model="shareholder.nationality" class="w-full p-2 rounded bg-gray-800 border border-gray-600" placeholder="Nationality" />
-                <input v-model="shareholder.address" class="w-full p-2 rounded bg-gray-800 border border-gray-600" placeholder="Residential address" />
-                <input v-model.number="shareholder.percentage" class="w-full p-2 rounded bg-gray-800 border border-gray-600" placeholder="Shareholding %" type="number" min="0" max="100" />
+                <div class="space-y-4">
+                    <input v-model="shareholder.fullName" class="w-full p-2 rounded bg-gray-800 border border-gray-600" placeholder="Full name" />
+                    <input v-model="shareholder.nationality" class="w-full p-2 rounded bg-gray-800 border border-gray-600" placeholder="Nationality" />
+                    <input v-model="shareholder.address" class="w-full p-2 rounded bg-gray-800 border border-gray-600" placeholder="Residential address" />
+                    <input v-model.number="shareholder.percentage" type="number" min="0" max="100" class="w-full p-2 rounded bg-gray-800 border border-gray-600" placeholder="Shareholding %" />
+                </div>
             </div>
         </div>
-
-        <button @click="addShareholder" class="px-4 py-2 bg-gray-700 hover:bg-gray-600 rounded">
-            + Add Shareholder
-        </button>
     </div>
 </template>
 
@@ -44,8 +44,8 @@ const shareholders = ref<Shareholder[]>([
         fullName: '',
         nationality: '',
         address: '',
-        percentage: null
-    }
+        percentage: null,
+    },
 ])
 
 function addShareholder() {
@@ -53,7 +53,7 @@ function addShareholder() {
         fullName: '',
         nationality: '',
         address: '',
-        percentage: null
+        percentage: null,
     })
 }
 
@@ -62,11 +62,14 @@ function removeShareholder(index: number) {
 }
 
 function validateShareholders() {
-    const allValid = shareholders.value.every(s =>
-        s.fullName && s.nationality && s.address && s.percentage !== null
+    const allValid = shareholders.value.every(
+        (s) => s.fullName && s.nationality && s.address && s.percentage !== null
     )
 
-    const totalPercentage = shareholders.value.reduce((sum, s) => sum + (s.percentage || 0), 0)
+    const totalPercentage = shareholders.value.reduce(
+        (sum, s) => sum + (s.percentage || 0),
+        0
+    )
 
     if (!allValid) {
         alert('Please complete all fields for each shareholder.')
@@ -78,13 +81,12 @@ function validateShareholders() {
         return
     }
 
-    // Proceed to next step (emit or navigate)
     console.log('Valid shareholders:', shareholders.value)
 }
 </script>
 
 <style scoped>
-input[type="radio"] {
+input[type='radio'] {
     accent-color: #8b5cf6;
 }
 </style>

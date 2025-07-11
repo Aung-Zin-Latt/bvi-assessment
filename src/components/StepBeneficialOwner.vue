@@ -1,5 +1,5 @@
 <template>
-    <div class="space-y-10 text-white">
+  <div class="max-w-4xl w-full mx-auto space-y-10 text-white">
         <!-- Step Header -->
         <div class="text-center">
             <h1 class="text-3xl font-bold">Beneficial Owner</h1>
@@ -37,9 +37,7 @@
                 </div>
             </div>
 
-            <input v-model.number="form.ownershipPercentage"
-                class="w-full p-2 rounded bg-gray-800 border border-gray-600" placeholder="Ownership % (optional)"
-                type="number" min="0" max="100" />
+            <input v-model.number="form.ownershipPercentage" class="w-full p-2 rounded bg-gray-800 border border-gray-600" placeholder="Ownership % (optional)" type="number" min="0" max="100" />
         </div>
     </div>
 </template>

@@ -1,5 +1,5 @@
 <template>
-    <div class="space-y-10 text-white">
+  <div class="max-w-4xl w-full mx-auto space-y-10 text-white">
         <!-- Step Header -->
         <div class="text-center">
             <h1 class="text-3xl font-bold">Director</h1>
@@ -34,10 +34,6 @@
                 <option value="Director">Director</option>
             </select>
         </div>
-
-        <button @click="addDirector" class="px-4 py-2 bg-gray-700 hover:bg-gray-600 rounded">
-            + Add Director
-        </button>
     </div>
 </template>
 

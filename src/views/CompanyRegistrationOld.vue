@@ -1,6 +1,6 @@
 <template>
-    <div class="min-h-screen flex flex-col bg-[#0E0E2C] text-white px-6 py-12">
-        <div class="flex-1 max-w-4xl w-full mx-3 min-w-[300px] sm:min-w-[600px] md:min-w-[900px] mx-auto">
+    <div class="min-h-screen bg-[#0E0E2C] text-white px-6 py-12">
+        <div class="max-w-4xl w-full">
             <!-- Top Header -->
             <div class="text-center mb-10">
                 <h1 class="text-3xl font-bold">Time to start your BVI company!</h1>
@@ -20,35 +20,16 @@
                 <StepBeneficialOwner v-if="currentStep === 3" />
                 <StepDirector v-if="currentStep === 4" />
             </div>
-        </div>
 
-        <!-- Sticky Footer Buttons -->
-        <div
-            class="mt-10 border-t border-gray-700 pt-6 max-w-4xl w-full mx-auto min-w-[300px] sm:min-w-[600px] md:min-w-[900px] flex flex-row items-center justify-between gap-2">
-            <!-- Back Button -->
-            <button @click="goBack"
-                class="w-1/4 sm:w-40 px-2 py-2 bg-gray-800 border border-gray-600 text-white flex justify-center items-center cursor-pointer"
-                :disabled="currentStep === 1">
-                <span class="hidden sm:inline">← BACK</span>
-                <span class="inline sm:hidden text-xs">←</span>
-            </button>
-
-            <!-- Save & Exit -->
-            <button @click="saveAndExit"
-                class="w-1/3 sm:w-48 px-4 py-2 border bg-gray-800 border-gray-600 text-white text-center cursor-pointer text-xs sm:text-base">
-                SAVE & EXIT
-            </button>
-
-            <!-- Next Button -->
-            <button @click="goNext"
-                class="w-1/4 sm:w-40 px-2 py-2 bg-blue-600 hover:bg-blue-500 text-white flex justify-center items-center cursor-pointer">
-                <span class="hidden sm:inline">{{ currentStep === 4 ? 'SUBMIT' : 'NEXT →' }}</span>
-                <span class="inline sm:hidden text-xs">→</span>
-            </button>
+            <!-- Footer Buttons -->
+            <div class="flex mt-10 space-x-4 items-center">
+                <button @click="goBack" class="px-4 w-40 bg-gray-800 border border-gray-600 text-gray-800" :disabled="currentStep === 1">← BACK</button>
+                <button @click="saveAndExit" class="flex-1 text-sm text-gray-400 text-center">SAVE & EXIT</button>
+                <button @click="goNext" class="px-6 w-40 bg-purple-600 hover:bg-purple-500 text-gray-800">{{ currentStep === 4 ? 'SUBMIT' : 'NEXT →' }}</button>
+            </div>
         </div>
     </div>
 </template>
-
 
 <script setup lang="ts">
 import { ref } from 'vue'
